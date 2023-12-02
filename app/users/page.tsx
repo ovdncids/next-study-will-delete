@@ -1,6 +1,7 @@
 import {User} from "@/types/usersTypes"
 import {usersServices} from "@/services/usersServices"
 import Create from "./create"
+import Update from "./update"
 
 const Users = async () => {
   const users: User[] = await usersServices.usersRead()
@@ -21,14 +22,7 @@ const Users = async () => {
           </thead>
           <tbody>
             {users.map((user, index) => (
-              <tr key={index}>
-                <td>{user.name}</td>
-                <td>{user.age}</td>
-                <td>
-                  <button>Update</button>
-                  <button>Delete</button>
-                </td>
-              </tr>
+              <Update key={index} index={index} user={user} />
             ))}
           </tbody>
         </table>
