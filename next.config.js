@@ -4,6 +4,9 @@ const nextConfig = {
   eslint: {
     dirs: ["/"]
   },
+  images: {
+    domains: ["www.apple.com"]
+  },
   async rewrites() {
     return [
       {
