@@ -1,23 +1,28 @@
 "use client"
 import {useState} from "react"
+import Image from "next/image"
 import {styled, keyframes} from "@stitches/react"
 
 const items = [
   {
     title: "A",
-    backgroundColor: "red"
+    backgroundColor: "red",
+    src: "https://www.apple.com/kr/mac/home/bx/images/overview/consider/mac_ease__bvgkz2zdltxy_xlarge.jpg"
   },
   {
     title: "B",
-    backgroundColor: "orange"
+    backgroundColor: "orange",
+    src: "https://www.apple.com/v/mac/home/bx/images/overview/consider/mac_performance__dh5hyac1zf8m_xlarge.jpg"
   },
   {
     title: "C",
-    backgroundColor: "yellow"
+    backgroundColor: "yellow",
+    src: "https://www.apple.com/kr/mac/home/bx/images/overview/consider/mac_iphone__gh1tblkt6bqm_xlarge.jpg"
   },
   {
     title: "D",
-    backgroundColor: "green"
+    backgroundColor: "green",
+    src: "https://www.apple.com/v/mac/home/bx/images/overview/consider/mac_compatibility__cu59oukz81ci_xlarge.jpg"
   }
 ]
 const width = 300
@@ -35,6 +40,11 @@ const SwiperStyled = styled("div", {
   "& > div > div": {
     minWidth: `${width}px`,
     minHeight: "300px"
+  },
+  "& > div > div > img": {
+    width: "100%",
+    aspectRatio: "1/1",
+    objectFit: "cover"
   }
 })
 
@@ -72,7 +82,16 @@ const Swiper = () => {
       <SwiperStyled>
         <div style={{animation: `${animation ? `${animation} 1s forwards` : ""}`}}>
           {items.map((item, index) => (
-            <div key={index} style={{backgroundColor: item.backgroundColor}}>{item.title}</div>
+            // <div key={index} style={{backgroundColor: item.backgroundColor}}>{item.title}</div>
+            <div key={index}>
+              <Image
+                src={item.src}
+                alt={item.title}
+                width={0}
+                height={0}
+                sizes="100vw"
+              />
+            </div>
           ))}
         </div>
       </SwiperStyled>
