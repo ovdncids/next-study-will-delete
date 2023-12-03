@@ -77,9 +77,28 @@ const Swiper = () => {
       direction
     })
   }
+  let touchPoint = 0
+  let mousePoint = 0
   return (
     <>
-      <SwiperStyled>
+      <SwiperStyled
+        onTouchStart={(event) => touchPoint = event.touches[0].pageX}
+        onTouchEnd={(event) => {
+          if (touchPoint < event.changedTouches[0].pageX) {
+            move("back")
+          } else if (touchPoint > event.changedTouches[0].pageX) {
+            move("next")
+          }
+        }}
+        onMouseDown={(event) => mousePoint = event.pageX}
+        onMouseUp={(event) => {
+          if (mousePoint < event.pageX) {
+            move("back")
+          } else if (mousePoint > event.pageX) {
+            move("next")
+          }
+        }}
+      >
         <div style={{animation: `${animation ? `${animation} 1s forwards` : ""}`}}>
           {items.map((item, index) => (
             // <div key={index} style={{backgroundColor: item.backgroundColor}}>{item.title}</div>
@@ -90,6 +109,7 @@ const Swiper = () => {
                 width={0}
                 height={0}
                 sizes="100vw"
+                draggable={false}
               />
             </div>
           ))}
