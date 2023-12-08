@@ -10,7 +10,7 @@ export const usersServices = {
     }
   },
   usersCreate: async (user: User) => {
-    const res = await fetch("proxy/api/users", {
+    const res = await fetch("/proxy/api/users", {
       method: "POST",
       body: JSON.stringify(user)
     })
