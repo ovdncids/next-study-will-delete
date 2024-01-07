@@ -14,7 +14,8 @@ const nextConfig = {
         destination: `${process.env.NEXT_PRIVATE_BACKEND_API_URL}/api/:path*`
       }
     ]
-  }
+  },
+  output: "standalone"
 }
 
 module.exports = nextConfig
