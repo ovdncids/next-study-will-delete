@@ -8,7 +8,7 @@ const Users = async () => {
   console.log(users)
   return (
     <div>
-      <h3>Users</h3>
+      <h3>Users {process.env.NEXT_PUBLIC_TEST}</h3>
       <hr className="d-block" />
       <div>
         <h4>Read</h4>
