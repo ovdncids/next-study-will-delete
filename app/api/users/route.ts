@@ -1,5 +1,6 @@
 import {NextRequest, NextResponse} from "next/server"
 import {User} from "@/types/usersTypes"
+import mysql2Pool from "@/libraries/mysql2Pool"
 
 declare global {
   var users: User[]
@@ -16,6 +17,7 @@ if (!global.users) {
 }
 
 export const GET = async () => {
+  await mysql2Pool()
   return NextResponse.json(global.users)
 }
 
